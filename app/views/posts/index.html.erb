@@ -1,5 +1,18 @@
 <h3>All Posts</h3>
-<% @posts.each do |post| %>
-  <h4><%= link_to post.title, post %> </h4>
-  <%= post.created_at %>
-<% end %>
+<div style="width: 500px;">
+  <% data = [['Name of Post', 'Number of Posts'],
+          ['Work',     11],
+          ['Eat',      4],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]] %>
+
+<%= bar_chart data, library: { barSliceText: 'value' } %>
+  <%= bar_chart (@data), xtitle: "Number of Posts"  %>
+</div>
+<div style="margin-top: 50px;" >
+   <% @posts.each do |post| %>
+    <h4><%= link_to post.title, post %> </h4>
+    <%= post.created_at %>
+  <% end %>
+</div>
