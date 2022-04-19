@@ -1,9 +1,9 @@
 <div>
+
   <p>
     <h3>Title:
     <%= @post.title %></h3>
   </p>
-
   <p>
    <small>Created at:
     <%= @post.created_at %></small>
@@ -18,8 +18,17 @@
     <% end %>
   <p>
     <h5><%= @post.comments.count %> Comments</h5>
+    <% data = [['Comment author name', 'Number of total comments'],
+          ['xyz',     11],
+          ['abc',      4],
+          ['bcd',  2],
+          ['hij', 2]]%>
+
+<%= bar_chart data, library: { barSliceText: 'value' } %>
+    <%= bar_chart (@data), xtitle: "Number of comments", colors: ["#b00", "#666"]  %>
     <%= render @post.comments %>
 
     <strong>Add comments:</strong>
     <%= render "comments/form" %>
 </div>
+
